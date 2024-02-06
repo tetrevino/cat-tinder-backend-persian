@@ -62,4 +62,58 @@ require 'rails_helper'
     # Errors are returned as an array because there could be more than one, if there are more than one validation failures on an attribute.
     expect(json['name']).to include "can't be blank"
   end
+
+  it "doesn't create a cat without a name" do
+    cat_params = {
+      cat: {
+        name: 'Sylvester',
+        enjoys: 'Walks in the park',
+        image: 'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1036&q=80'
+      }
+    }
+    # Send the request to the  server
+    post '/cats', params: cat_params
+    # expect an error if the cat_params does not have a name
+    expect(response.status).to eq 422
+    # Convert the JSON response into a Ruby Hash
+    json = JSON.parse(response.body)
+    # Errors are returned as an array because there could be more than one, if there are more than one validation failures on an attribute.
+    expect(json['age']).to include "can't be blank"
+  end
+
+  it "doesn't create a cat without a name" do
+    cat_params = {
+      cat: {
+        name: 'Thomas OMalley',
+        age: 2,
+        image: 'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1036&q=80'
+      }
+    }
+    # Send the request to the  server
+    post '/cats', params: cat_params
+    # expect an error if the cat_params does not have a name
+    expect(response.status).to eq 422
+    # Convert the JSON response into a Ruby Hash
+    json = JSON.parse(response.body)
+    # Errors are returned as an array because there could be more than one, if there are more than one validation failures on an attribute.
+    expect(json['enjoys']).to include "can't be blank"
+  end
+  
+  it "doesn't create a cat without a name" do
+    cat_params = {
+      cat: {
+        name: 'Garfield',
+        age: 2,
+        enjoys: 'Walks in the park',
+      }
+    }
+    # Send the request to the  server
+    post '/cats', params: cat_params
+    # expect an error if the cat_params does not have a name
+    expect(response.status).to eq 422
+    # Convert the JSON response into a Ruby Hash
+    json = JSON.parse(response.body)
+    # Errors are returned as an array because there could be more than one, if there are more than one validation failures on an attribute.
+    expect(json['image']).to include "can't be blank"
+  end
 end

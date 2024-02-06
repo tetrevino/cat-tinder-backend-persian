@@ -63,7 +63,7 @@ require 'rails_helper'
     expect(json['name']).to include "can't be blank"
   end
 
-  it "doesn't create a cat without a name" do
+  it "doesn't create a cat without an age" do
     cat_params = {
       cat: {
         name: 'Sylvester',
@@ -81,7 +81,7 @@ require 'rails_helper'
     expect(json['age']).to include "can't be blank"
   end
 
-  it "doesn't create a cat without a name" do
+  it "doesn't create a cat without enjoys" do
     cat_params = {
       cat: {
         name: 'Thomas OMalley',
@@ -99,7 +99,7 @@ require 'rails_helper'
     expect(json['enjoys']).to include "can't be blank"
   end
   
-  it "doesn't create a cat without a name" do
+  it "doesn't create a cat without an image" do
     cat_params = {
       cat: {
         name: 'Garfield',

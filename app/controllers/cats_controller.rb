@@ -5,13 +5,13 @@ class CatsController < ApplicationController
     end
     def create
         cat = Cat.create(cat_params)
-        render json: cat
+        if cat.valid?
+            render json: cat
+        else 
+            render json: cat.errors, status: 422
+        end
     end 
-    def update
-    end 
-    def destroy
-    end
-
+    
     private
     def cat_params
         params.require(:cat).permit(:name, :age, :enjoys, :image)
